@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { AppRegistry, View, Text, StyleSheet, Platform } from 'react-native';
 
-function Time() {
-    return (
-        <div>
-            
-        </div>
-    )
+function Name() {
+    return(
+        
+     <Text>Pavan Shetty</Text>
+     
+    );
+    
 }
 
-export default Time
+export default Name
