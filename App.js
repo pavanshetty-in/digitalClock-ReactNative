@@ -7,18 +7,8 @@ import {
   Text,
   ImageBackground,
 } from "react-native";
-import { Header } from "react-native-elements";
+import { Header, Icon } from "react-native-elements";
 
-// import {
-//   useFonts,
-//  POPPINS_400Regular,
-//  POPPINS_500Regular,
-//  POPPINS_200Regular,
-//  POPPINS_600Regular,
-
-// } from "@expo-google-fonts/POPPINS";
-
-import Name from "./components/time";
 const App = () => {
   let newTime;
   let hours;
@@ -53,59 +43,46 @@ const App = () => {
   let bg1 = {
     uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg1.jpg?alt=media&token=65c14ea1-0a21-4adb-be23-1cc74eeb7945",
   };
-  if (hour > 20) {
+  if (hour >= 0) {
     bg1 = {
       uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg4.jpg?alt=media&token=8961818f-fc6a-4c76-9e73-d06ce9aaaa07",
     };
   }
   return (
     <>
-      {/* <View>
-        <Header
-          centerComponent={{
-            text: "Digital Clock",
-            style: { color: "#fff", fontSize: 15, fontWeight: "bold" },
-          }}
-        />
-        <View style={styles.timesec}>
-          <Text style={styles.timetxt}>
-            {hour > 12 ? hour - 12 : hour == 0 ? 12 : hour}:
-            {minute < 10 ? "0" + minute : minute}
-          </Text>
-          <Text style={styles.timeam}>{hour < 12 ? "AM" : "PM"}</Text>
-        </View>
-
-        <Text>{second < 10 ? "0" + second : second}</Text>
-        <Text>
-          {day === 1
-            ? "Monday"
-            : day === 2
-            ? "Tuesday"
-            : day === 3
-            ? "Wednesday"
-            : day === 4
-            ? "Thursday"
-            : day === 5
-            ? "Friday"
-            : day === 6
-            ? "Saturday"
-            : "Sunday"}
-        </Text>
-      </View> */}
       <View style={styles.page}>
         <ImageBackground source={bg1} style={styles.bg}>
-          <View>
-            <Text style={styles.head}>Digital Clock</Text>
-            {/* <Text style={styles.timetxt}>{hour}</Text> */}
-          </View>
-          <View>
-            <Text style={styles.timetxt}>
-              {hour > 12 ? hour - 12 : hour == 0 ? 12 : hour}:
-              {minute < 10 ? "0" + minute : minute}
-            </Text>
-          </View>
-          <View>
-            <Text>Pavan S</Text>
+          <View style={styles.flexs}>
+            <View>
+              <Text style={styles.head}>Digital Clock</Text>
+              <View style={styles.loactionbox}>
+                <View>
+                  <Icon name="map-marker" type="font-awesome" size={16} color="#ffffff" />
+                </View>
+                <View>
+                  <Text style={styles.loactiontext}>Bangalore, India</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.timebox}>
+              <View>
+                <Text style={styles.timetxt}>
+                  {hour > 12 ? hour - 12 : hour == 0 ? 12 : hour}:
+                  {minute < 10 ? "0" + minute : minute}
+                </Text>
+              </View>
+              <View style={styles.timesub}>
+                <Text style={styles.timesubtext}>
+                  {second < 10 ? "0" + second : second}
+                </Text>
+                <Text style={styles.timesubtext}>
+                  {hour < 12 ? "AM" : "PM"}
+                </Text>
+              </View>
+            </View>
+            <View>
+              <Text style={styles.timesubtext}>Pavan S</Text>
+            </View>
           </View>
         </ImageBackground>
       </View>
@@ -121,6 +98,9 @@ const styles = StyleSheet.create({
   bg: {
     flex: 1,
     resizeMode: "cover",
+  },
+  flexs: {
+    flex: 1,
     justifyContent: "space-between",
   },
   head: {
@@ -128,20 +108,46 @@ const styles = StyleSheet.create({
     paddingTop: "15%",
     paddingLeft: 20,
     color: "#ffffff",
-    
+  },
+  timebox: {
+    flex: 1,
+    flexDirection: "row",
+    paddingTop: 30,
+  },
+  timesub: {
+    flex: 1,
+    flexDirection: "column",
+    paddingTop: 10,
+  },
+  timesubtext: {
+    color: "#ffffff",
+    fontSize: 26,
+    paddingLeft: 10,
   },
 
   timetxt: {
     fontSize: 68,
     color: "#ffffff",
-    marginBottom: "80%",
+    marginBottom: "50%",
     paddingLeft: 20,
-    fontWeight:'100',
+    fontWeight: "100",
+  },
+  loactionbox: {
+    paddingLeft:20,
+    display: "flex",
+    flexDirection: "row",
+    color: "#ffffff",
+    fontSize:16
+  },
+  loactiontext:{
+    color: "#ffffff",
+    paddingLeft:5
   },
   timeam: {
     alignSelf: "baseline",
     padding: 10,
     fontSize: 28,
+    fontWeight:'100'
   },
 });
 
