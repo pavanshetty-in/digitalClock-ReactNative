@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { Header, Icon } from "react-native-elements";
 
+
+// Root app function
 const App = () => {
   let newTime;
   let hours;
@@ -26,6 +28,7 @@ const App = () => {
   const [month, setmonth] = useState();
   const [date, setdate] = useState();
 
+  // Time updated every second 
   const updateTime = () => {
     newTime = new Date().toLocaleTimeString();
     setTime(newTime);
@@ -47,7 +50,12 @@ const App = () => {
     setdate(dates);
   };
 
+
+  // calling UpdateTime every second
   setInterval(updateTime, 1000);
+
+
+// change of image
   let bg1 = {
     uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg4.jpg?alt=media&token=8961818f-fc6a-4c76-9e73-d06ce9aaaa07",
   };
@@ -70,6 +78,8 @@ const App = () => {
   }
   return (
     <>
+
+      {/* main screen View */}
       <View style={styles.page}>
         <ImageBackground source={bg1} style={styles.bg}>
           <View style={styles.flexs}>
@@ -160,6 +170,9 @@ const App = () => {
     </>
   );
 };
+
+
+// styling objects
 const styles = StyleSheet.create({
   page: {
     flex: 1,
@@ -237,5 +250,7 @@ const styles = StyleSheet.create({
     paddingLeft:20
   }
 });
+
+
 
 export default App;
