@@ -15,12 +15,16 @@ const App = () => {
   let minutes;
   let seconds;
   let newDay;
+  let months;
+  let dates;
 
   const [time, setTime] = useState();
   const [hour, setHour] = useState();
   const [minute, setMinutes] = useState();
   const [second, setSeconds] = useState();
   const [day, setDayy] = useState();
+  const [month, setmonth] = useState();
+  const [date, setdate] = useState();
 
   const updateTime = () => {
     newTime = new Date().toLocaleTimeString();
@@ -37,6 +41,10 @@ const App = () => {
 
     newDay = new Date().getDay();
     setDayy(newDay);
+    months= new Date().getMonth();
+    setmonth(months);
+    dates=new Date().getDate();
+    setdate(dates);
   };
 
   setInterval(updateTime, 1000);
@@ -57,27 +65,77 @@ const App = () => {
               <Text style={styles.head}>Digital Clock</Text>
               <View style={styles.loactionbox}>
                 <View>
-                  <Icon name="map-marker" type="font-awesome" size={16} color="#ffffff" />
+                  <Icon
+                    name="map-marker"
+                    type="font-awesome"
+                    size={16}
+                    color="#ffffff"
+                  />
                 </View>
                 <View>
                   <Text style={styles.loactiontext}>Bangalore, India</Text>
                 </View>
               </View>
             </View>
-            <View style={styles.timebox}>
-              <View>
-                <Text style={styles.timetxt}>
-                  {hour > 12 ? hour - 12 : hour == 0 ? 12 : hour}:
-                  {minute < 10 ? "0" + minute : minute}
-                </Text>
+            <View style={styles.timeDaybox}>
+              <View style={styles.timebox}>
+                <View>
+                  <Text style={styles.timetxt}>
+                    {hour > 12 ? hour - 12 : hour == 0 ? 12 : hour}:
+                    {minute < 10 ? "0" + minute : minute}
+                  </Text>
+                </View>
+                <View style={styles.timesub}>
+                  <Text style={styles.timesubtext}>
+                    {second < 10 ? "0" + second : second}
+                  </Text>
+                  <Text style={styles.timesubtext}>
+                    {hour < 12 ? "AM" : "PM"}
+                  </Text>
+                </View>
               </View>
-              <View style={styles.timesub}>
-                <Text style={styles.timesubtext}>
-                  {second < 10 ? "0" + second : second}
+              <View style={styles.daytext}>
+                <Text style={styles.day}>
+                  {day === 1
+                    ? "Monday,"
+                    : day === 2
+                    ? "Tuesday,"
+                    : day === 3
+                    ? "Wednesday,"
+                    : day === 4
+                    ? "Thursday,"
+                    : day === 5
+                    ? "Friday"
+                    : day === 6
+                    ? "Saturday,"
+                    : "Sunday,"}
                 </Text>
-                <Text style={styles.timesubtext}>
-                  {hour < 12 ? "AM" : "PM"}
+                <Text style={styles.day}>
+                  {month === 0
+                    ? " January"
+                    : month === 1
+                    ? " February"
+                    : month === 2
+                    ? " March"
+                    : month === 3
+                    ? " April"
+                    : month === 4
+                    ? " May"
+                    : month === 5
+                    ? " June"
+                    : month === 6
+                    ? " July"
+                    : month === 7
+                    ? " August"
+                    : month === 8
+                    ? " September"
+                    : month === 9
+                    ? " October"
+                    : month === 10
+                    ? " November"
+                    : " December"}
                 </Text>
+                 <Text style={styles.day}> {date}</Text>
               </View>
             </View>
             <View>
@@ -109,10 +167,16 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     color: "#ffffff",
   },
+  timeDaybox: {
+    paddingBottom: "90%",
+    display: "flex",
+    flexDirection: "column",
+  },
   timebox: {
-    flex: 1,
+    display: "flex",
     flexDirection: "row",
-    paddingTop: 30,
+
+    
   },
   timesub: {
     flex: 1,
@@ -128,26 +192,29 @@ const styles = StyleSheet.create({
   timetxt: {
     fontSize: 68,
     color: "#ffffff",
-    marginBottom: "50%",
     paddingLeft: 20,
     fontWeight: "100",
   },
   loactionbox: {
-    paddingLeft:20,
+    paddingLeft: 20,
     display: "flex",
     flexDirection: "row",
     color: "#ffffff",
-    fontSize:16
+    fontSize: 16,
   },
-  loactiontext:{
+  loactiontext: {
     color: "#ffffff",
-    paddingLeft:5
+    paddingLeft: 5,
   },
-  timeam: {
-    alignSelf: "baseline",
-    padding: 10,
-    fontSize: 28,
-    fontWeight:'100'
+  daytext: {
+    display: "flex",
+    flexDirection: "row",
+    paddingLeft: 25,
+    color: "#ffffff",
+  },
+  day:{
+  color: "#ffffff",
+  fontSize:18,
   },
 });
 
