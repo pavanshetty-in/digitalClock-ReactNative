@@ -49,11 +49,23 @@ const App = () => {
 
   setInterval(updateTime, 1000);
   let bg1 = {
-    uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg1.jpg?alt=media&token=65c14ea1-0a21-4adb-be23-1cc74eeb7945",
+    uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg4.jpg?alt=media&token=8961818f-fc6a-4c76-9e73-d06ce9aaaa07",
   };
-  if (hour >= 0) {
+  
+  if (hour > 10 && hour < 16) {
     bg1 = {
-      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg4.jpg?alt=media&token=8961818f-fc6a-4c76-9e73-d06ce9aaaa07",
+      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sky.jpg?alt=media&token=fbfc0e05-1d25-4361-a9fd-ec057f88c876",
+    };
+  }
+  if (hour > 16 && hour <19) {
+    bg1 = {
+      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sunset.jpg?alt=media&token=dc0381ea-d2c0-434f-b632-73890cb0e359",
+    };
+  }
+  if (hour > 6 && hour <10) {
+    bg1 = {
+     
+      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg1.jpg?alt=media&token=65c14ea1-0a21-4adb-be23-1cc74eeb7945",
     };
   }
   return (
@@ -135,11 +147,12 @@ const App = () => {
                     ? " November"
                     : " December"}
                 </Text>
-                 <Text style={styles.day}> {date}</Text>
+                <Text style={styles.day}> {date}</Text>
               </View>
             </View>
             <View>
-              <Text style={styles.timesubtext}>Pavan S</Text>
+              <Text style={styles.designed} >Designed By</Text>
+              <Text style={styles.pavan}>Pavan S (1RN20MC035)</Text>
             </View>
           </View>
         </ImageBackground>
@@ -168,15 +181,13 @@ const styles = StyleSheet.create({
     color: "#ffffff",
   },
   timeDaybox: {
-    paddingBottom: "90%",
+    paddingBottom: "80%",
     display: "flex",
     flexDirection: "column",
   },
   timebox: {
     display: "flex",
     flexDirection: "row",
-
-    
   },
   timesub: {
     flex: 1,
@@ -190,7 +201,7 @@ const styles = StyleSheet.create({
   },
 
   timetxt: {
-    fontSize: 68,
+    fontSize: 72,
     color: "#ffffff",
     paddingLeft: 20,
     fontWeight: "100",
@@ -212,10 +223,19 @@ const styles = StyleSheet.create({
     paddingLeft: 25,
     color: "#ffffff",
   },
-  day:{
-  color: "#ffffff",
-  fontSize:18,
+  day: {
+    color: "#ffffff",
+    fontSize: 18,
   },
+  pavan: {
+    color: "#ffffff",
+    paddingLeft: 20,
+    fontSize: 18,
+  },
+  designed:{
+    color: "#ffffff",
+    paddingLeft:20
+  }
 });
 
 export default App;
