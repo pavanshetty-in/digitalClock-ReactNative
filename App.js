@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { Header, Icon } from "react-native-elements";
 
-
 // Root app function
 const App = () => {
   let newTime;
@@ -28,7 +27,7 @@ const App = () => {
   const [month, setmonth] = useState();
   const [date, setdate] = useState();
 
-  // Time updated every second 
+  // Time updated every second
   const updateTime = () => {
     newTime = new Date().toLocaleTimeString();
     setTime(newTime);
@@ -44,41 +43,42 @@ const App = () => {
 
     newDay = new Date().getDay();
     setDayy(newDay);
-    months= new Date().getMonth();
+    months = new Date().getMonth();
     setmonth(months);
-    dates=new Date().getDate();
+    dates = new Date().getDate();
     setdate(dates);
   };
-
 
   // calling UpdateTime every second
   setInterval(updateTime, 1000);
 
-
-// change of image
+  // change of image
   let bg1 = {
-    uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg4.jpg?alt=media&token=8961818f-fc6a-4c76-9e73-d06ce9aaaa07",
+    uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg4.jpg?alt=media&token=b8d99ab1-7ad0-47dc-a8a2-e8678c64ccd2",
   };
-  
-  if (hour > 10 && hour < 16) {
+
+  if (hour > 9 && hour < 14) {
     bg1 = {
-      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sky.jpg?alt=media&token=fbfc0e05-1d25-4361-a9fd-ec057f88c876",
+      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sky.jpg?alt=media&token=5bed958c-a7ef-43d7-8b13-3c146a867cd5",
     };
   }
-  if (hour > 16 && hour <19) {
+  if (hour > 14 && hour < 17) {
     bg1 = {
-      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sunset.jpg?alt=media&token=dc0381ea-d2c0-434f-b632-73890cb0e359",
+      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sky2.jpg?alt=media&token=d386977c-c5d2-4916-a828-bcac2b85109d",
     };
   }
-  if (hour > 6 && hour <10) {
+  if (hour > 17 && hour < 19) {
     bg1 = {
-     
-      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/bg1.jpg?alt=media&token=65c14ea1-0a21-4adb-be23-1cc74eeb7945",
+      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sunset.jpg?alt=media&token=fb9f6073-e4c8-456a-92c3-c8c8ef0d0880",
+    };
+  }
+  if (hour > 6 && hour < 9) {
+    bg1 = {
+      uri: "https://firebasestorage.googleapis.com/v0/b/digital-clock-1f6ae.appspot.com/o/sunrise.jpg?alt=media&token=d59fd685-048b-4eee-9a71-4632d4210d9d",
     };
   }
   return (
     <>
-
       {/* main screen View */}
       <View style={styles.page}>
         <ImageBackground source={bg1} style={styles.bg}>
@@ -161,7 +161,7 @@ const App = () => {
               </View>
             </View>
             <View>
-              <Text style={styles.designed} >Designed By</Text>
+              <Text style={styles.designed}>Designed By</Text>
               <Text style={styles.pavan}>Pavan S (1RN20MC035)</Text>
             </View>
           </View>
@@ -170,7 +170,6 @@ const App = () => {
     </>
   );
 };
-
 
 // styling objects
 const styles = StyleSheet.create({
@@ -194,7 +193,7 @@ const styles = StyleSheet.create({
     color: "#ffffff",
   },
   timeDaybox: {
-    paddingBottom: "80%",
+    paddingBottom: "100%",
     display: "flex",
     flexDirection: "column",
   },
@@ -245,12 +244,10 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     fontSize: 18,
   },
-  designed:{
+  designed: {
     color: "#ffffff",
-    paddingLeft:20
-  }
+    paddingLeft: 20,
+  },
 });
-
-
 
 export default App;
